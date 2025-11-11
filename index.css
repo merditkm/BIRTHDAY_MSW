@@ -17,7 +17,7 @@ body::before {
   margin: 0;
   display: flex;
   flex-direction: column;
-
+  text-align: center;
 }
 #finmain {
   flex: 1; /* pousse le footer vers le bas */
