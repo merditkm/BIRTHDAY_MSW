@@ -76,7 +76,6 @@ imgimpr.forEach(img => {
     });
 });
 
-console.log("test3");
 
 
 
