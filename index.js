@@ -76,11 +76,7 @@ imgimpr.forEach(img => {
     });
 });
 
-i1.addEventListener('click',() => {
-    
-   
-})
-
+console.log("test");
 
 
 
