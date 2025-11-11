@@ -18,6 +18,7 @@ body::before {
   display: flex;
   flex-direction: column;
   text-align: center;
+  filter: blur(5px);
 }
 #finmain {
   flex: 1; /* pousse le footer vers le bas */
@@ -49,6 +50,7 @@ p {
   border-bottom: 1px solid #ccc; /* pour le séparer du contenu */
   z-index: 1000;
   border: none;
+  font-size: 20px;
     
 }
 
