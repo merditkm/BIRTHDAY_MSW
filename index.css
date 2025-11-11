@@ -1,0 +1,124 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap');
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/images/anniv_ball+gateau.jpg");
+  background-size: cover;
+  background-position: center;
+  z-index: -1; /* met le fond derrière le contenu */
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+
+}
+#finmain {
+  flex: 1; /* pousse le footer vers le bas */
+}
+div {
+  width: 90%;
+  text-align: center;
+  padding-bottom: 30px;
+  /* margin-bottom: 50px; */
+}
+
+p {
+  font-family: 'Dancing Script', cursive;
+  font-weight: bolder;
+  font-size: 30px;
+  white-space: pre-line; /* permet les retours à la ligne si besoin */
+}
+
+#haut {
+  position: fixed;  /* fixe l’élément par rapport à la fenêtre du navigateur */
+  top: 0;           /* le colle en haut */
+  left: 0;          /* le colle à gauche (facultatif) */
+  width: 100%;      /* occupe toute la largeur (facultatif) */
+  background: #ffffff48; /* fond blanc pour qu’on le voie bien */
+  text-align: center;
+  padding: 10px;
+  margin: 0;
+  border-bottom: 1px solid #ccc; /* pour le séparer du contenu */
+  z-index: 1000;
+  border: none;
+    
+}
+
+h1 {
+   /* font-family: 'Pacifico', cursive; */
+   font-family: 'Lobster', cursive;
+   color: rgb(251, 171, 67);
+   margin-top: 60px;
+   margin-left: 10px;
+   font-size: 50px;
+}
+
+#e {
+  color: rgb(12, 184, 241);
+}
+
+img {
+  max-width: 200px;
+  height: 300px;
+  border: 1px solid #ccc;
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+  transition: transform 1.5s;
+  border-radius: 10px;
+}
+
+img:hover {
+  transform: scale(1.05);
+}
+
+.pair {
+  margin-left: 40px;
+}
+
+.impair {
+  margin-right: 20px;
+}
+
+#i1 {
+  transform: rotate(5deg);
+  margin-right: 80px;
+}
+#i2 {
+  transform: rotate(-10deg);
+}
+#i3 {
+  transform: rotate(10deg);
+}
+#i4 {
+  transform: rotate(-10deg);
+}
+#i5 {
+  transform: rotate(10deg); /* incline l’image de 10 degrés */
+}
+
+footer {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 20px;
+  text-align: center;
+  
+}
+#fp {
+  font-size: 15px;
+  text-align: center;
+  font-family: 'Merienda',sans-serif;
+}
+#footspan {
+  color:darkorchid; 
+}
+
+
+

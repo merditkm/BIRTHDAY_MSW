@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Effet texte dynamique sur clic image</title>
+
+<style>
+  /* --- STYLE DE BASE DE LA PAGE --- */
+  body {
+    font-family: Arial, sans-serif;  /* Police de texte simple et lisible */
+    background: #f7f7f7;             /* Couleur de fond grise claire */
+    padding: 20px;                   /* Espace intérieur autour du contenu */
+  }
+
+  /* --- CONTENEUR POUR CHAQUE IMAGE ET SON TEXTE --- */
+  .image-container {
+    display: inline-block;           /* Permet de placer plusieurs conteneurs côte à côte */
+    text-align: center;              /* Centre le texte sous l’image */
+    margin: 20px;                    /* Espace entre les images */
+  }
+
+  /* --- STYLE DES IMAGES --- */
+  .image-container img {
+    width: 200px;                    /* Largeur fixe pour les images */
+    height: auto;                    /* Hauteur ajustée automatiquement */
+    cursor: pointer;                 /* Le curseur change pour indiquer que c’est cliquable */
+    border-radius: 8px;              /* Coins arrondis */
+    transition: transform 0.3s;      /* Animation fluide lors du survol */
+  }
+
+  /* --- LÉGER EFFET DE ZOOM QUAND ON PASSE LA SOURIS SUR L’IMAGE --- */
+  .image-container img:hover {
+    transform: scale(1.05);          /* Agrandit légèrement l’image */
+  }
+
+  /* --- ZONE OÙ LE TEXTE S’AFFICHE --- */
+  .text {
+    margin-top: 10px;                /* Petit espace entre l’image et le texte */
+    min-height: 30px;                /* Réserve un peu d’espace pour éviter que tout bouge */
+    font-size: 18px;                 /* Taille du texte */
+    color: #333;                     /* Couleur du texte (gris foncé) */
+  }
+
+  /* --- CURSEUR CLIGNOTANT (EFFET MACHINE À ÉCRIRE) --- */
+  .cursor {
+    display: inline-block;
+    width: 10px;
+    background: #333;                /* Petit rectangle noir qui clignote */
+    animation: blink 0.8s infinite;  /* Animation répétée toutes les 0,8 secondes */
+  }
+
+  /* --- ANIMATION DU CLIGNOTEMENT --- */
+  @keyframes blink {
+    50% { opacity: 0; }              /* Le curseur devient invisible au milieu de l’animation */
+  }
+</style>
+</head>
+
+<body>
+
+  <!-- 
+    Chaque "image-container" contient :
+      - une image cliquable
+      - un texte qui s’affichera en dessous
+  -->
+  <div class="image-container">
+    <!-- data-text = le texte qui s’affichera quand on clique -->
+    <img src="https://placekitten.com/200/200" alt="Chaton" data-text="Voici un adorable petit chat 🐱.">
+    <div class="text"></div> <!-- zone où le texte s’écrira -->
+  </div>
+
+  <div class="image-container">
+    <img src="https://placebear.com/200/200" alt="Ours" data-text="Regardez cet ours majestueux 🐻.">
+    <div class="text"></div>
+  </div>
+
+  <div class="image-container">
+    <img src="https://picsum.photos/200" alt="Photo aléatoire" data-text="Une belle image prise au hasard 📸.">
+    <div class="text"></div>
+  </div>
+
+
+  <!-- ======================= -->
+  <!-- SCRIPT JAVASCRIPT       -->
+  <!-- ======================= -->
+  <script>
+
+    /**
+     * Fonction qui crée l'effet "machine à écrire"
+     * @param {HTMLElement} element - L'endroit où afficher le texte
+     * @param {string} text - Le texte à écrire
+     * @param {number} speed - Vitesse entre chaque lettre (en millisecondes)
+     */
+    function typeWriter(element, text, speed = 50) {
+      element.innerHTML = ""; // On efface tout texte précédent dans la zone
+
+      let i = 0; // Compteur pour suivre la position actuelle dans le texte
+
+      // On crée un élément "curseur" visuel qui clignote pendant la saisie
+      const cursor = document.createElement('span');
+      cursor.classList.add('cursor');
+      element.appendChild(cursor); // On ajoute le curseur dans la zone du texte
+
+      // "setInterval" exécute une fonction plusieurs fois à intervalles réguliers
+      const interval = setInterval(() => {
+
+        if (i < text.length) {
+          // Insère la lettre suivante juste avant le curseur
+          cursor.insertAdjacentText('beforebegin', text.charAt(i));
+          i++; // On passe à la lettre suivante
+        } else {
+          // Quand toutes les lettres sont affichées :
+          clearInterval(interval); // On arrête le minuteur
+          cursor.remove();          // Et on retire le curseur clignotant
+        }
+
+      }, speed); // délai entre chaque lettre (par défaut 50 ms)
+    }
+
+
+    // Sélectionne toutes les images dans la page
+    const images = document.querySelectorAll('img');
+
+    // Pour chaque image, on ajoute un "écouteur d’événement"
+    images.forEach(img => {
+
+      img.addEventListener('click', () => {
+        // Sélectionne le div juste en dessous de l’image
+        const textElement = img.nextElementSibling;
+
+        // Récupère le texte stocké dans "data-text"
+        const text = img.dataset.text;
+
+        // Lance l’animation de saisie
+        typeWriter(textElement, text, 40); // vitesse = 40 ms entre chaque lettre
+      });
+    });
+
+  </script>
+
+</body>
+</html>
+
