@@ -10,7 +10,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("images/anniv_ball+gateau.jpg");
+  background-image: url("images/anniversaire_ballons_bleus.jpg");
   background-size: cover;
   background-position: center;
   z-index: -1; /* met le fond derrière le contenu */
